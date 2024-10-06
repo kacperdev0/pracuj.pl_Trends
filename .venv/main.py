@@ -1,3 +1,4 @@
+import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,5 +23,8 @@ def getOfferLinksForKeyword(keyword):
     links = [component.get("href") for component in linkComponents]
     return links
 
-
-print(getOfferLinksForKeyword("cybersecurity"))
+def getOfferRequirements(url):
+    html = requests.get(url)
+    soup = BeautifulSoup(html.text, "html.parser")
+    print(soup)
+print(getOfferRequirements(getOfferLinksForKeyword("cybersecurity")[0]))
