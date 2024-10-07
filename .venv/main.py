@@ -27,4 +27,6 @@ def getOfferRequirements(url):
     html = requests.get(url)
     soup = BeautifulSoup(html.text, "html.parser")
     print(soup)
-print(getOfferRequirements(getOfferLinksForKeyword("cybersecurity")[0]))
+    soup.find_all(attrs={"data-test":"section-responsibilities"})
+    print(soup)
+print(getOfferRequirements("https://www.pracuj.pl/praca/senior-ot-soc-analyst-wroclaw,oferta,1003584871?s=ff047766&searchId=MTcyODMxODE5NDI2NS43NDcz&ref=top_booster_1_1_1"))
